@@ -108,7 +108,6 @@ class Writer{
                 total_price float
             );
         `
-
     }
 }
 
