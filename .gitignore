@@ -1,0 +1,8 @@
+front-end/.next
+front-end/node_modules
+front-end/package-lock.json
+front-end/yarn.lock
+api/node_modules
+api/.env
+api/package-lock.json
+api/dist
