@@ -62,7 +62,7 @@ class Writer{
             }
 
             if(mode == 'sql'){
-                let fields = Object.keys(record).join(',')
+                let fields = Object.keys(record).join(',').toLocaleLowerCase()
                 let values = Object.values(record).map((val)=>{
                     if (typeof val == 'string'){
                         return `'${val}'`
@@ -113,7 +113,7 @@ class Writer{
 }
 
 function writer(){
-    return new Writer('TRANSACTION')
+    return new Writer('TRANSACTIONS')
 }
 
 writer().asSQL().then((data)=>{

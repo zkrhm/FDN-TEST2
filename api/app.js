@@ -19,15 +19,9 @@ app.get('/v1/api',(req, res) => {
         res.json({type:"Wrong Parameter for query mode, available mode : normal xor pivot"})
     }
 
-    let dataHeader = {
-        'normal': ['id','Full Name',"Email",'Item','Qty','Total Harga'], 
-        'pivot': ['Full Name','Email',"Barang 0","Barang 1","Barang 2","Barang 3","Barang 4","Barang 5","Barang 6","Barang 7","Barang 8","Barang 9"]
-    }[mode]
-
     pool.query(QueryFactory.getQuery(mode)).then((payload)=>{
         res.header("Access-Control-Allow-Origin", "*");
         res.json({
-            header : dataHeader,
             payload : payload.rows
         })
     }).catch((err)=>{
@@ -36,6 +30,4 @@ app.get('/v1/api',(req, res) => {
     
 })
 
-app.listen(process.env.API_PORT,() => {
-    console.log(`"running on port ${process.env.API_PORT}"`)
-})
+module.exports = app
