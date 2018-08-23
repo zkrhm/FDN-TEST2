@@ -6,3 +6,4 @@ api/node_modules
 api/.env
 api/package-lock.json
 api/dist
+E2E-test/node_modules
