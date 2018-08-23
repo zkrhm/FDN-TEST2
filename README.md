@@ -33,10 +33,10 @@ this application consist of two part :
 
 ### How To run
 1. API Apps : 
-    1. ```cd``` to api directory then :  
-    2. npm install
-    3. npm run
+    - ```cd``` to api directory then :  
+    - npm install
+    - npm run
 2. Front End Apps : 
-    1. ```cd``` to api directory then :  
-    2. yarn install
-    3. yarn run dev 
+    - ```cd``` to front-end directory then :  
+    - yarn install
+    - yarn run dev 
