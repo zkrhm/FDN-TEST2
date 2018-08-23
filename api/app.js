@@ -12,22 +12,31 @@ app.get('/v1/api',(req, res) => {
         mode = 'normal'
     }
 
-    console.log('mode'+mode)
+    if(mode == 'normal' || mode == 'pivot'){
+        pool.query(QueryFactory.getQuery(mode)).then((payload)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.json({
+                payload : payload.rows
+            })
+        }).catch((err)=>{
+            console.log(`error : ${err}`)
+        })
 
-    if(mode != 'normal' && mode != 'pivot'){
+        
+    }else{
         res.status(422)
         res.json({type:"Wrong Parameter for query mode, available mode : normal xor pivot"})
     }
 
-    pool.query(QueryFactory.getQuery(mode)).then((payload)=>{
-        res.header("Access-Control-Allow-Origin", "*");
-        res.json({
-            payload : payload.rows
-        })
-    }).catch((err)=>{
-        console.log(`error : ${err}`)
-    })
     
+})
+
+app.get('/', (req,res)=>{
+    const url = require('url')
+    res.redirect(url.format({
+        pathname: '/v1/api',
+        query: req.query
+    }))
 })
 
 module.exports = app

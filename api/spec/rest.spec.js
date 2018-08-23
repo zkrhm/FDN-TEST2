@@ -7,6 +7,7 @@ describe('REST access test', () => {
         const res = await request(app).get('/v1/api')
         expect(res.status).toBe(200)
         let obj = res.body.payload[0]
+        expect(res.header['access-control-allow-origin']).toEqual('*')
         expect(Object.keys(obj)).toEqual(['key', 'fullname', 'email', 'item', 'qty', 'totalprice'])
     })
 
@@ -17,6 +18,13 @@ describe('REST access test', () => {
         expect(Object.keys(obj)).toEqual([
             'fullname', 'email', 'barang_0', 'barang_1', 'barang_2',
             'barang_3', 'barang_4', 'barang_5', 'barang_6', 'barang_7', 'barang_8', 'barang_9', 'key'])
+    })
+
+    test('should throw error if mode unrecognized',async ()=>{
+        const res = await request(app).get('/v1/api?mode=invalid-mode')
+        // let respCode = res.status
+        expect(res.status).toBe(422)
+        expect(res.body).toEqual({"type":"Wrong Parameter for query mode, available mode : normal xor pivot"})
     })
 
     test('counting synchronization between normal and pivot', async () => {
