@@ -41,7 +41,7 @@ console.log(`goods : ${goods}`)
 
 
 
-class Writer{
+class DataGenerator{
 
     constructor(tableName){
         this.tableName = tableName
@@ -112,7 +112,7 @@ class Writer{
 }
 
 function writer(){
-    return new Writer('TRANSACTIONS')
+    return new DataGenerator('TRANSACTIONS')
 }
 
 writer().asSQL().then((data)=>{
