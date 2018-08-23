@@ -8,7 +8,8 @@
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && nodemon dist/server.js",
     "background": "npm run build && nodemon dist/server.js &",
-    "stop": "pgrep -f nodemon | xargs kill -9 "
+    "stop": "pgrep -f nodemon | xargs kill -9 ",
+    "cleanup": "rm -Rf dist/"
   },
   "repository": {
     "type": "git",

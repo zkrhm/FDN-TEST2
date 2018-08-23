@@ -2,9 +2,10 @@
   "name": "with-ant-design",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next start",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cleanup": "rm -Rf .next/"
   },
   "dependencies": {
     "@zeit/next-css": "^0.1.4",
